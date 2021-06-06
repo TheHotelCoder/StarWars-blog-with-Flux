@@ -3,15 +3,17 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-			</Link>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
+		<nav className="row navbar navbar-light bg-light mb-3">
+			<div className="col-md-3 text-center px-2 py-2 ">
+				<Link to="/">
+					<img
+						className="img-fluid w-50 p-3"
+						src="https://logos-marcas.com/wp-content/uploads/2020/11/Star-Wars-Logo.png"
+					/>
 				</Link>
 			</div>
+
+			<div className="col-md-3 text-center ">FAVORITES</div>
 		</nav>
 	);
 };
