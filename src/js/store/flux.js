@@ -1,32 +1,29 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			people: []
+			people: [],
+			planets: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				// getActions().changeColor(0, "green");
 			},
-			loadSomeData: () => {
-				fetch("https://www.swapi.tech/api/people")
+
+			loadSomeData: type => {
+				let tipo = type;
+				console.log(tipo);
+				console.log(`https://swapi.dev/api/${type}`);
+				fetch(`https://swapi.dev/api/${type}`)
 					.then(resp => resp.json())
-					.then(data => setStore({ people: data.results }));
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				// setStore({ demo: demo });
+					.then(data => setStore({ tipo: data.results }));
 			}
+
+			// loadSomeData: () => {
+			// 	fetch("https://swapi.dev/api/people/")
+			// 		.then(resp => resp.json())
+			// 		.then(data => setStore({ people: data.results }));
+			// }
 		}
 	};
 };
