@@ -12,12 +12,12 @@ const Favourites = () => {
 				data-toggle="dropdown"
 				aria-haspopup="true"
 				aria-expanded="false">
-				Favourites {store.favorite.length}
+				Favourites {store.favorites.length}
 			</button>
 			<div className="dropdown-menu">
 				<ul>
-					{store.favorite.length > 0 ? (
-						store.favorite.map((favorite, index) => {
+					{store.favorites.length > 0 ? (
+						store.favorites.map((favorite, index) => {
 							return (
 								<li key={index}>
 									<a href="#">{favorite}</a>

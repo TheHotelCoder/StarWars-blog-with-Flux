@@ -3,23 +3,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			people: [],
 			vehicles: [],
-			planets: []
+			planets: [],
+			favorites: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				// getActions().changeColor(0, "green");
-			},
-
-			// loadSomeData: type => {
-			// 	let tipo = type;
-			// 	console.log(tipo);
-			// 	console.log(`https://swapi.dev/api/${type}`);
-			// 	fetch(`https://swapi.dev/api/${type}`)
-			// 		.then(resp => resp.json())
-			// 		.then(data => setStore({ tipo: data.results }));
-			// }
-
 			loadPeople: () => {
 				fetch("https://swapi.dev/api/people/")
 					.then(resp => resp.json())
@@ -34,6 +21,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch("https://swapi.dev/api/planets/")
 					.then(resp => resp.json())
 					.then(data => setStore({ planets: data.results }));
+			},
+
+			addFavorite: item => {
+				const store = getStore();
+				const validate = store.favorites.includes(item);
+				if (store.favorites == [] || !validate) {
+					setStore({ favorites: [...store.favorites, item] });
+				}
+			},
+
+			deleteFavorite: id => {
+				const store = getStore();
+				const updatedList = [...store.favorites];
+				updatedList.splice(id, 1);
+				setStore({ favorites: [...updatedList] });
 			}
 		}
 	};

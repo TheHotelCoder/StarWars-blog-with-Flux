@@ -1,9 +1,11 @@
-import React from "react";
 import { Card, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 
 function InfoCardPeople({ person }) {
-	console.log(person);
+	const { actions } = useContext(Context);
+
 	return (
 		<Card style={{ width: "16rem" }} className="col-4 text-center mb-4 d-inline-block">
 			<Card.Img variant="top" src="https://unsplash.com/photos/c0VRNWVEjOA/download?force=true" />
@@ -15,7 +17,13 @@ function InfoCardPeople({ person }) {
 				<Card.Text>gender: {person.gender}</Card.Text>
 				<Card.Text>birthday: {person.birth_year}</Card.Text>
 
-				<Button variant="primary">Add to favourites</Button>
+				<Button
+					variant="primary"
+					onClick={() => {
+						actions.addFavorite(person.name);
+					}}>
+					Add to favourites
+				</Button>
 			</Card.Body>
 		</Card>
 	);

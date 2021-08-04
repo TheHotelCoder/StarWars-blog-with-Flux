@@ -1,9 +1,11 @@
-import React from "react";
 import { Card, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 
 function InfoCardVehicle({ vehicle }) {
-	console.log(vehicle);
+	const { store, actions } = useContext(Context);
+
 	return (
 		<Card style={{ width: "16rem" }} className="col-4 text-center mb-4 d-inline-block">
 			<Card.Img variant="top" src="https://unsplash.com/photos/c0VRNWVEjOA/download?force=true" />
@@ -14,7 +16,13 @@ function InfoCardVehicle({ vehicle }) {
 				<Card.Text>crew: {vehicle.crew}</Card.Text>
 				<Card.Text>passengers: {vehicle.passengers}</Card.Text>
 
-				<Button variant="primary">Add to favourites</Button>
+				<Button
+					variant="primary"
+					onClick={() => {
+						actions.addFavorite(vehicle.name);
+					}}>
+					Add to favourites
+				</Button>
 			</Card.Body>
 		</Card>
 	);

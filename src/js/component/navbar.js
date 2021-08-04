@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Favourites } from "../component/Favourites";
+import Favourites from "./favourites";
 
 export const Navbar = () => {
 	return (
-		<nav className="row navbar navbar-light bg-light mb-3">
+		<div className="row navbar navbar-light bg-light mb-3">
 			<div className="col-md-3 text-center px-2 py-2 ">
 				<Link to="/">
 					<img
@@ -13,10 +13,9 @@ export const Navbar = () => {
 					/>
 				</Link>
 			</div>
-
 			<div className="col-md-3 text-center ">
 				<Favourites />
 			</div>
-		</nav>
+		</div>
 	);
 };

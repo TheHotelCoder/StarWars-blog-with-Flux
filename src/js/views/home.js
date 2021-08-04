@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useContext, useEffect } from "react";
+
 import "../../styles/home.scss";
 import { Context } from "../store/appContext";
 import InfoCardPeople from "../component/Cardone";
@@ -7,9 +7,7 @@ import InfoCardVehicle from "../component/Cardtwo";
 import InfoCardPlanets from "../component/CardThree";
 
 export const Home = () => {
-	const { store } = useContext(Context);
-	console.log(store.people);
-	console.log(store.planets);
+	const { store, actions } = useContext(Context);
 
 	return (
 		<div className=" mt-5">
