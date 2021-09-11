@@ -2,7 +2,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			people: [],
-			vehicles: [],
 			planets: [],
 			favorites: []
 		},
@@ -12,11 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 					.then(data => setStore({ people: data.results }));
 			},
-			loadVehicles: () => {
-				fetch("https://swapi.dev/api/starships/")
-					.then(resp => resp.json())
-					.then(data => setStore({ vehicles: data.results }));
-			},
+
 			loadPlanets: () => {
 				fetch("https://swapi.dev/api/planets/")
 					.then(resp => resp.json())
@@ -26,7 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addFavorite: item => {
 				const store = getStore();
 				const validate = store.favorites.includes(item);
-				if (store.favorites == [] || !validate) {
+				if (!validate) {
 					setStore({ favorites: [...store.favorites, item] });
 				}
 			},

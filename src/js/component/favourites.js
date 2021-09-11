@@ -1,40 +1,19 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 const Favourites = () => {
 	const { store, actions } = useContext(Context);
+	function scrollToList() {
+		const elmnt = document.getElementById("readinglist");
+		elmnt.scrollIntoView({ block: "start" });
+	}
+
 	return (
-		<div classNameName="btn-group">
-			<button
-				type="button"
-				className="btn btn-primary dropdown-toggle"
-				data-toggle="dropdown"
-				aria-haspopup="true"
-				aria-expanded="false">
-				Favourites {store.favorites.length}
-			</button>
-			<div className="dropdown-menu">
-				<ul>
-					{store.favorites.length > 0 ? (
-						store.favorites.map((favorite, index) => {
-							return (
-								<li key={index}>
-									<a href="#">{favorite}</a>
-									<i
-										id="delete"
-										className="far fa-trash-alt pointer trash px-3"
-										onClick={() => {
-											actions.deleteFavorite({ index });
-										}}
-									/>
-								</li>
-							);
-						})
-					) : (
-						<span>Empty</span>
-					)}
-				</ul>
+		<div className="dropdown">
+			<div className="btn-group">
+				<button type="button" className="btn btn-primary" aria-expanded="false" onClick={() => scrollToList()}>
+					Favourites {store.favorites.length}
+				</button>
 			</div>
 		</div>
 	);

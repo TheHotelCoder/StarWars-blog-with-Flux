@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import { useHistory } from "react-router-dom";
 import Favourites from "./favourites";
 
 export const Navbar = () => {
+	const history = useHistory();
 	return (
 		<div className="row navbar navbar-light bg-light mb-3">
 			<div className="col-md-3 text-center px-2 py-2 ">
@@ -10,6 +13,7 @@ export const Navbar = () => {
 					<img
 						className="img-fluid w-50 p-3"
 						src="https://logos-marcas.com/wp-content/uploads/2020/11/Star-Wars-Logo.png"
+						onClick={() => history.push("/")}
 					/>
 				</Link>
 			</div>
